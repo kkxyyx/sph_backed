@@ -12,7 +12,7 @@
             <el-table-column prop="spuName" label="spu名称" width="260" />
             <el-table-column prop="description" label="spu描述" width="260" />
             <el-table-column prop="" label="操作">
-              <template slot-scope="{row,$index}">
+              <template slot-scope="{row}">
                 <el-tooltip class="item" effect="dark" content="添加" placement="bottom">
                   <el-button size="mini" type="success" icon="el-icon-plus" @click="addSku(row)" />
                 </el-tooltip>
@@ -49,7 +49,7 @@
             <el-table-column prop="price" label="价格" width="width" />
             <el-table-column prop="weight" label="重量" width="width" />
             <el-table-column label="默认图片" width="width">
-              <template slot-scope="{row,$index}">
+              <template slot-scope="{row}">
                 <img :src="row.skuDefaultImg" alt="" style="width:100px;height:100px;">
               </template>
             </el-table-column>

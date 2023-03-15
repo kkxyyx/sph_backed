@@ -7,7 +7,7 @@
       <el-form-item label="品牌">
         <el-select v-model="spu.tmId" placeholder="请选择品牌" value="">
           <el-option
-            v-for="(tm,index) in tradeMarkList"
+            v-for="tm in tradeMarkList"
             :key="tm.id"
             :label="tm.tmName"
             :value="tm.id"
@@ -35,7 +35,7 @@
       </el-form-item>
       <el-form-item :inline="true" label="销售属性">
         <el-select v-model="attrIdAndAttrName" :placeholder="`有${unSelectSaleAttr.length}个未选择`">
-          <el-option v-for="(unSelect,index) in unSelectSaleAttr" :key="unSelect.id" :label="unSelect.name" :value="`${unSelect.id}:${unSelect.name}`" />
+          <el-option v-for="unSelect in unSelectSaleAttr" :key="unSelect.id" :label="unSelect.name" :value="`${unSelect.id}:${unSelect.name}`" />
         </el-select>
         <el-button icon="el-icon-plus" :disabled="!attrIdAndAttrName" @click="addSaleAttr">添加销售属性</el-button>
       </el-form-item>
@@ -45,7 +45,7 @@
           <el-table-column type="index" label="序号" width="100" align="center" />
           <el-table-column prop="saleAttrName" label="属性名" width="260" />
           <el-table-column prop="prop" label="属性值列表" width="260">
-            <template slot-scope="{row,$index}">
+            <template slot-scope="{row}">
               <el-tag v-for="(tag,index) in row.spuSaleAttrValueList" :key="tag.id" closable @close="row.spuSaleAttrValueList.splice(index, 1)">
                 {{ tag.saleAttrValueName }}
               </el-tag>
@@ -63,7 +63,7 @@
             </template>
           </el-table-column>
           <el-table-column property="" label="操作">
-            <template slot-scope="{row,$index}">
+            <template slot-scope="{$index}">
               <el-button size="mini" type="danger" icon="el-icon-delete" @click="spu.spuSaleAttrList.splice($index,1)" />
             </template>
           </el-table-column>
